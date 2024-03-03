@@ -2,9 +2,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import controllers.AccountController;
+import domen.Employee;
 import domen.Student;
 import domen.StudentGroup;
 import domen.StudentSteam;
+import domen.Teacher;
+import services.TeacherService;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -23,6 +27,8 @@ public class App {
         Student student9= new Student("glasha", 23);
         Student student10= new Student("Washa", 21);
         Student student11= new Student("Rasha", 225);
+        // Student student12= new Student("VasyaHItriy", 228);
+
         students2.add(student8);
         students2.add(student9);
         students2.add(student10);
@@ -76,6 +82,41 @@ public class App {
         System.out.println("---------------------------------");
         Collections.sort(studentSteam.getStudentSteamList());
         System.out.println(studentSteam);
+
+Employee worker =new Employee("Anton", 15, "cleanMan");
+Employee worker2 =new Employee("GOGA", 70, "cleanMan");
+
+Teacher teacher= new Teacher("Sova", 66,"master");
+
+// AccountController contr=new AccountController();
+AccountController.paySalary(worker, 1000);
+AccountController.paySalary(teacher, 2000);
+System.out.println("---------------------------------");
+List<Teacher>listTeacher=new ArrayList<>();
+List<Employee>listEmployee=new ArrayList<>();
+listEmployee.add(worker2);
+listEmployee.add(worker);
+Teacher teacher2=new Teacher("Andrey",19,"Professor");
+Teacher teacher3=new Teacher("mihail",59,"assistent");
+Teacher teacher4=new Teacher("Egor",46,"fizkultur");
+Teacher teacher5=new Teacher("Andrey",45,"Professor");
+listTeacher.add(teacher);
+listTeacher.add(teacher2);
+listTeacher.add(teacher3);
+listTeacher.add(teacher4);
+listTeacher.add(teacher5);
+TeacherService teacherServiceList=new TeacherService(listTeacher);
+teacherServiceList.setTeacherList(listTeacher);
+teacherServiceList.printSortTeacherList(); // сортировка и вывод списка учителей
+System.out.println("Учителя ");
+AccountController.avarageAge(listTeacher);
+System.out.println("Студенты ");
+AccountController.avarageAge(students);
+System.out.println("Работники  ");
+AccountController.avarageAge(listEmployee);
+
+
+
 
 
 
